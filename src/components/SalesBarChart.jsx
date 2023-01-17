@@ -3,19 +3,17 @@ import React from "react";
 import {
   Bar,
   BarChart,
-  Brush,
-  Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
-import { sales } from "../Data/index";
+import { sales } from "../data";
 
 export const SalesBarChart = () => {
   const theme = useTheme();
   return (
-    <Box sx={{ p: 2, backgroundColor: theme.palette.background.paper }}>
+    <Box sx={{ p: 2, backgroundColor: "background.paper", borderRadius: 2 }}>
       <Box
         sx={{
           height: 150,
@@ -49,7 +47,50 @@ export const SalesBarChart = () => {
           </BarChart>
         </ResponsiveContainer>
       </Box>
-      <Typography variant="h4">Sales Bar Chart</Typography>
+      <Box sx={{ p: 2 }}>
+        <Box>
+          <Typography variant="h5" color="text.secondary">
+            Sales
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            <span style={{ fontWeight: "bold" }}>(+ 200%) </span>
+            <span>than last month</span>
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mt: 2,
+          }}
+        >
+          <Box>
+            <Typography variant="h5" color="text.secondary">
+              $ 2,500
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Total Sales
+            </Typography>
+          </Box>
+          <Box>
+            <Typography variant="h5" color="text.secondary">
+              $ 1,000
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Total Profit
+            </Typography>
+          </Box>
+          <Box sx={{ textAlign: "right" }}>
+            <Typography variant="h5" color="text.secondary">
+              100
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Total Orders
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 };

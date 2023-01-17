@@ -15,6 +15,9 @@ export const Nav = () => {
         <ListItem>
           <Link to="/settings">settings</Link>
         </ListItem>
+        <ListItem>
+          <Link to="/products">Products</Link>
+        </ListItem>
       </List>
     </nav>
   );

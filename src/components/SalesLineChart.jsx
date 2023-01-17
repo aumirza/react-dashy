@@ -13,19 +13,12 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { sales, sales2 } from "../Data/index";
-
-const allSales = sales.map((sale, index) => {
-  return {
-    ...sale,
-    amt2: sales2[index].amt,
-  };
-});
+import { allSales } from "../data";
 
 export const SalesLineChart = () => {
   const theme = useTheme();
   return (
-    <Box sx={{ p: 2 }}>
+    <Box sx={{ p: 5, backgroundColor: "background.paper", borderRadius: 2 }}>
       <ResponsiveContainer width="100%" height={300}>
         <ComposedChart data={allSales}>
           <YAxis />
@@ -33,7 +26,7 @@ export const SalesLineChart = () => {
 
           {/* shading below line */}
           <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="gradPrimary" x1="0" y1="0" x2="0" y2="1">
               <stop
                 offset="5%"
                 stopColor={theme.palette.primary.main}
@@ -45,7 +38,7 @@ export const SalesLineChart = () => {
                 stopOpacity={0}
               />
             </linearGradient>
-            <linearGradient id="colorUv2" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="gradSecondary" x1="0" y1="0" x2="0" y2="1">
               <stop
                 offset="5%"
                 stopColor={theme.palette.secondary.main}
@@ -63,7 +56,8 @@ export const SalesLineChart = () => {
           <CartesianGrid vertical={false} strokeDasharray="3 5" />
           <Line
             type="monotone"
-            dataKey="amt"
+            dataKey="previousYear"
+            name={new Date().getFullYear() - 1}
             strokeWidth={3}
             // legendType="none"
             dot={false}
@@ -72,7 +66,8 @@ export const SalesLineChart = () => {
           />
           <Line
             type="monotone"
-            dataKey="amt2"
+            dataKey="currentYear"
+            name={new Date().getFullYear()}
             strokeWidth={3}
             // legendType="none"
             dot={false}
@@ -85,8 +80,8 @@ export const SalesLineChart = () => {
             fillOpacity={1}
             stroke={false}
             strokeWidth={3}
-            dataKey="amt"
-            fill="url(#colorUv)"
+            dataKey="previousYear"
+            fill="url(#gradPrimary)"
           />
           <Area
             tooltipType="none"
@@ -94,16 +89,14 @@ export const SalesLineChart = () => {
             fillOpacity={1}
             stroke={false}
             strokeWidth={3}
-            dataKey="amt2"
-            fill="url(#colorUv2)"
+            dataKey="currentYear"
+            fill="url(#gradSecondary)"
           />
           <Brush
             dataKey="month"
             height={30}
             stroke={theme.palette.primary.main}
             fill="none"
-            startIndex={0}
-            endIndex={3}
           />
         </ComposedChart>
       </ResponsiveContainer>
