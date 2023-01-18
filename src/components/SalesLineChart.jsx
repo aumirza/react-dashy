@@ -6,7 +6,6 @@ import {
   Brush,
   CartesianGrid,
   ComposedChart,
-  Legend,
   Line,
   ResponsiveContainer,
   Tooltip,
