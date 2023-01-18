@@ -20,12 +20,6 @@ export function App() {
           <Route path="/" element={<Home />} />
         </Route>
 
-        {/* <Route path="/billing" element={<Billing />} />
-      <Route path="/billing/*" element={<Billing />} />
-      <Route path="/billing/plan" element={<Plan />} />
-      <Route path="/billing/payment" element={<Payment />} />
-      <Route path="/billing/invoice" element={<Invoice />} />
-      <Route path="/billing/invoice/*" element={<Invoice />} /> */}
       </Routes>
     </ThemeProvider>
   );

@@ -35,10 +35,10 @@ export const Home = () => {
       </Grid>
 
       <Grid sx={{ pt: 2 }} container spacing={2}>
-        <Grid item xs={12} sm={6} md={4} lg={5}>
+        <Grid item xs={12} sm={6} md={5}>
           <SalesBarChart />
         </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={7}>
+        <Grid item xs={12} sm={6} md={7}>
           <SalesLineChart />
         </Grid>
       </Grid>

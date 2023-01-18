@@ -6,6 +6,7 @@ import { Header } from "./Layouts/Header";
 import { Sidebar } from "./Layouts/Sidebar";
 
 const SidebarWidth = 180;
+// const SidebarWidth = 80;
 
 export const Layout = () => {
   const theme = useTheme();

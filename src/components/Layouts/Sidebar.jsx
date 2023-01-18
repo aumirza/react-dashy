@@ -10,14 +10,26 @@ export const Sidebar = ({ width }) => {
       sx={{
         width: width,
         flexShrink: 0,
-        "& .MuiDrawer-paper": { width: width },
+        "& .MuiDrawer-paper": { width: width, bgcolor: "primary.main" },
       }}
       variant="permanent"
       anchor="left"
       open={true}
     >
       <Box>
-        <Typography variant="h4">Sidebar</Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: 64,
+            bgcolor: "primary.dark",
+          }}
+        >
+          <Typography fontFamily="monospace" variant="h4" color="white">
+            Dashy
+          </Typography>
+        </Box>
         <Divider />
         <Nav />
       </Box>
