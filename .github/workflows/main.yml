@@ -2,7 +2,7 @@ name: Build and Deploy
 
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
     paths:
       - "src/**"
       - "package.json"
@@ -10,7 +10,7 @@ on:
       - ".github/workflows/main.yml"
 
   pull_request:
-    branches: ["main"]
+    branches: ["master"]
 
 permissions:
   contents: write
