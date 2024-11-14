@@ -10,7 +10,7 @@ export const Sidebar = ({ width }) => {
       sx={{
         width: width,
         flexShrink: 0,
-        "& .MuiDrawer-paper": { width: width, bgcolor: "primary.main" },
+        "& .MuiDrawer-paper": { width: width },
       }}
       variant="permanent"
       anchor="left"
@@ -26,7 +26,12 @@ export const Sidebar = ({ width }) => {
             bgcolor: "primary.dark",
           }}
         >
-          <Typography fontFamily="monospace" variant="h4" color="white">
+          <Typography
+            sx={{ fontWeight: "800", fontSize: { xs: "2.5rem", sm: "3rem" } }}
+            fontFamily="monospace"
+            variant="h4"
+            color="white"
+          >
             Dashy
           </Typography>
         </Box>

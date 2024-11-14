@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 import { Header } from "./Layouts/Header";
 import { Sidebar } from "./Layouts/Sidebar";
 
-const SidebarWidth = 180;
+const SidebarWidth = 250;
 // const SidebarWidth = 80;
 
 export const Layout = () => {
@@ -17,7 +17,12 @@ export const Layout = () => {
         <Header />
         <Box
           component="section"
-          sx={{ pt: 2, background: theme.palette.background.default, p: 5 }}
+          sx={{
+            pt: 2,
+            background: theme.palette.background.default,
+            p: 5,
+            maxWidth: "100%",
+          }}
         >
           <Outlet />
         </Box>

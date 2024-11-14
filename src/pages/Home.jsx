@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid2 } from "@mui/material";
 import React from "react";
 import { SalesBarChart } from "../components/SalesBarChart";
 import { SalesLineChart } from "../components/SalesLineChart";
@@ -26,22 +26,22 @@ const statCards = [
 export const Home = () => {
   return (
     <Box>
-      <Grid container spacing={2}>
+      <Grid2 container spacing={2}>
         {statCards.map((stat) => (
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Grid2 item xs={12} sm={6} md={4} lg={3}>
             <StatCard stat={stat} />
-          </Grid>
+          </Grid2>
         ))}
-      </Grid>
+      </Grid2>
 
-      <Grid sx={{ pt: 2 }} container spacing={2}>
-        <Grid item xs={12} sm={6} md={5}>
+      <Grid2 sx={{ pt: 2 }} container spacing={2}>
+        <Grid2 item xs={12} sm={6} md={5}>
           <SalesBarChart />
-        </Grid>
-        <Grid item xs={12} sm={6} md={7}>
+        </Grid2>
+        <Grid2 item xs={12} sm={6} md={7}>
           <SalesLineChart />
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
     </Box>
   );
 };

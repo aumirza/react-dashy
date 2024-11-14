@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
-  Box,
-  Paper,
   TablePagination,
   TableContainer,
   Typography,
+  Fab,
 } from "@mui/material";
+import Paper from "@mui/material/Paper"
+import Box from "@mui/material/Box";
+
+import { Add as AddIcon } from "@mui/icons-material";
 import { productsData } from "../data";
 import { ProductsTable } from "../components/ProductsTable";
 import { ProductsTableFilter } from "../components/ProductsTableFilter";
@@ -135,6 +138,13 @@ export const Products = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       ) : null}
+      <Fab
+        sx={{ position: "fixed", bottom: 16, right: 16 }}
+        color="primary"
+        aria-label="add"
+      >
+        <AddIcon />
+      </Fab>
     </TableContainer>
   );
 };

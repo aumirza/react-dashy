@@ -7,8 +7,8 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, Fragment } from "react";
+import { NavLink } from "react-router-dom";
 
 const navLinks = [
   [
@@ -29,7 +29,14 @@ const navLinks = [
     },
     {
       text: "Products",
+      path: "/products",
       icon: <Store />,
+      children: [
+        {
+          text: "Add New",
+          path: "/products/add",
+        },
+      ],
     },
   ],
   [
@@ -54,24 +61,53 @@ export const Nav = () => {
   return (
     <nav>
       {navLinks.map((links, index) => (
-        <List key={index}>
+        <List sx={{ gap: 0 }} key={index}>
           {links.map((link) => (
-            <ListItem sx={{ display: "block" }} disablePadding>
-              <Link style={{ textDecoration: "none" }} to={link.path}>
-                <ListItemButton>
-                  {link.icon && (
-                    <ListItemIcon sx={{ color: "white" }}>
-                      {link.icon}
-                    </ListItemIcon>
-                  )}
-                  <ListItemText sx={{ color: "white" }} primary={link.text} />
-                </ListItemButton>
-              </Link>
-            </ListItem>
+            <Fragment key={link.text}>
+              <NavItem
+                key={link.text}
+                {...link}
+                end={link.children ? true : false}
+              />
+              {link.children && link.children.length > 0 && (
+                <List sx={{ pl: 2 }}>
+                  {link.children.map((child) => (
+                    <NavItem
+                      key={child.text}
+                      {...child}
+                      disablePadding={true}
+                    />
+                  ))}
+                </List>
+              )}
+            </Fragment>
           ))}
           <Divider />
         </List>
       ))}
     </nav>
+  );
+};
+
+const NavItem = ({ icon, text, path, disablePadding, end }) => {
+  const [isActive, setIsActive] = useState(false);
+
+  return (
+    <ListItem sx={{ display: "block" }} disablePadding={disablePadding}>
+      <NavLink
+        className={({ isActive }) => setIsActive(isActive)}
+        style={{ textDecoration: "none" }}
+        to={path}
+        end={end}
+      >
+        <ListItemButton selected={isActive}>
+          <Divider />
+          {icon && (
+            <ListItemIcon sx={{ color: "primary" }}>{icon}</ListItemIcon>
+          )}
+          <ListItemText primary={text} />
+        </ListItemButton>
+      </NavLink>
+    </ListItem>
   );
 };
